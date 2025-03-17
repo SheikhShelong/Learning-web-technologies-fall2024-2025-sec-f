@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+</head>
+<body>
+    <h1>Add Product</h1>
+    <form action="insert_product.php" method="POST">
+        <label for="product_name">Product Name:</label><br>
+        <input type="text" id="product_name" name="product_name" required><br><br>
+
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price" step="0.01" required><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" required></textarea><br><br>
+
+        <label for="quantity">Quantity:</label><br>
+        <input type="number" id="quantity" name="quantity" required><br><br>
+
+        <input type="submit" value="Add Product">
+    </form>
+</body>
+</html>
