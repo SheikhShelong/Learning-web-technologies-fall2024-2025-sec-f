@@ -1,0 +1,116 @@
+<!-- profile-picture-validation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Picture Validation</title>
+    <style>
+        .error { color: red; }
+        .success { color: green; }
+        .form-container {
+            border: 1px solid #000;
+            padding: 10px;
+            width: 320px;
+        }
+        .form-title {
+            border-bottom: 1px solid #000;
+            margin-top: -10px;
+            padding: 0 5px;
+            position: absolute;
+            background: white;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-content {
+            margin-top: 10px;
+        }
+        .submit-btn {
+            margin-top: 10px;
+            background-color: #ddd;
+            border: 1px solid #999;
+            padding: 2px 10px;
+        }
+        .field-container {
+            margin-bottom: 5px;
+        }
+        .field-label {
+            display: inline-block;
+            width: 60px;
+            color: #006400;
+            font-weight: bold;
+        }
+        .field-input {
+            width: 200px;
+        }
+        .field-line {
+            border-top: 1px solid #000;
+            margin-top: 2px;
+            width: 100%;
+        }
+        .file-input-container {
+            display: flex;
+            align-items: center;
+        }
+        .file-status {
+            margin-left: 5px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-title">Profile Picture</div>
+        <div class="form-content">
+            <form onsubmit="return validateProfilePic()">
+                <div class="field-container">
+                    <div class="field-label">User Id</div>
+                    <input type="text" id="userId" class="field-input">
+                    <div class="field-line"></div>
+                </div>
+                <div class="field-container">
+                    <div class="field-label">Picture</div>
+                    <div class="file-input-container">
+                        <input type="file" id="picture" accept="image/*">
+                        <div class="file-status" id="fileStatus">No file selected.</div>
+                    </div>
+                    <div class="field-line"></div>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+                <div id="profilePicError"></div>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Update file status text when a file is selected
+        document.getElementById('picture').addEventListener('change', function() {
+            const fileStatus = document.getElementById('fileStatus');
+            if (this.files.length > 0) {
+                fileStatus.textContent = this.files[0].name;
+            } else {
+                fileStatus.textContent = 'No file selected.';
+            }
+        });
+
+        function validateProfilePic() {
+            const userId = document.getElementById('userId').value.trim();
+            const picture = document.getElementById('picture').value;
+            const errorDiv = document.getElementById('profilePicError');
+
+            if (userId === "" || isNaN(parseInt(userId)) || parseInt(userId) <= 0) {
+                errorDiv.textContent = "User ID cannot be empty and must be a positive number";
+                errorDiv.className = "error";
+                return false;
+            }
+            if (picture === "") {
+                errorDiv.textContent = "Please select a profile picture";
+                errorDiv.className = "error";
+                return false;
+            }
+            errorDiv.textContent = "Profile picture validated!";
+            errorDiv.className = "success";
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!-- dob-validation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date of Birth Validation</title>
+    <style>
+        .error { color: red; }
+        .success { color: green; }
+        .form-container {
+            border: 1px solid #000;
+            padding: 10px;
+            width: 220px;
+        }
+        .form-title {
+            border-bottom: 1px solid #000;
+            margin-top: -10px;
+            padding: 0 5px;
+            position: absolute;
+            background: white;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-content {
+            margin-top: 10px;
+        }
+        .submit-btn {
+            margin-top: 10px;
+            background-color: #ddd;
+            border: 1px solid #999;
+            padding: 2px 10px;
+        }
+        .date-fields {
+            display: flex;
+            align-items: center;
+        }
+        .date-fields input {
+            width: 40px;
+            margin: 0 2px;
+        }
+        .date-fields input:last-child {
+            width: 60px;
+        }
+        .date-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 150px;
+            margin-bottom: 5px;
+        }
+        .date-labels span {
+            font-size: 12px;
+        }
+        .date-labels span:first-child {
+            margin-left: 10px;
+        }
+        .date-labels span:last-child {
+            margin-right: 5px;
+        }
+        .date-separator {
+            margin: 0 2px;
+        }
+        .date-line {
+            border-top: 1px solid #000;
+            margin-top: 5px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-title">Date of Birth</div>
+        <div class="form-content">
+            <form onsubmit="return validateDOB()">
+                <div class="date-labels">
+                    <span>dd</span>
+                    <span>mm</span>
+                    <span>yyyy</span>
+                </div>
+                <div class="date-fields">
+                    <input type="text" id="day" maxlength="2">
+                    <span class="date-separator">/</span>
+                    <input type="text" id="month" maxlength="2">
+                    <span class="date-separator">/</span>
+                    <input type="text" id="year" maxlength="4">
+                </div>
+                <div class="date-line"></div>
+                <button type="submit" class="submit-btn">Submit</button>
+                <div id="dobError"></div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function validateDOB() {
+            const day = parseInt(document.getElementById('day').value);
+            const month = parseInt(document.getElementById('month').value);
+            const year = parseInt(document.getElementById('year').value);
+            const errorDiv = document.getElementById('dobError');
+
+            if (isNaN(day) || isNaN(month) || isNaN(year)) {
+                errorDiv.textContent = "All fields must be filled";
+                errorDiv.className = "error";
+                return false;
+            }
+            if (day < 1 || day > 31) {
+                errorDiv.textContent = "Day must be between 1 and 31";
+                errorDiv.className = "error";
+                return false;
+            }
+            if (month < 1 || month > 12) {
+                errorDiv.textContent = "Month must be between 1 and 12";
+                errorDiv.className = "error";
+                return false;
+            }
+            if (year < 1900 || year > 2016) {
+                errorDiv.textContent = "Year must be between 1900 and 2016";
+                errorDiv.className = "error";
+                return false;
+            }
+            errorDiv.textContent = "Valid Date of Birth!";
+            errorDiv.className = "success";
+            return true;
+        }
+    </script>
+</body>
+</html>

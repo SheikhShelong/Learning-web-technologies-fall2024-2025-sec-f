@@ -1,0 +1,144 @@
+<!-- email.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Validation</title>
+    <style>
+        .error { color: red; }
+        .success { color: green; }
+        .form-container {
+            border: 1px solid #000;
+            padding: 10px;
+            width: 320px;
+            position: relative;
+            margin-top: 100px;
+        }
+        .form-title {
+            border-bottom: 1px solid #000;
+            margin-top: -10px;
+            padding: 0 5px;
+            position: absolute;
+            background: white;
+            font-weight: bold;
+            color: #333;
+            top: -10px;
+            left: 10px;
+        }
+        .form-content {
+            margin-top: 20px;
+        }
+        .submit-btn {
+            margin-top: 10px;
+            background-color: #ddd;
+            border: 1px solid #999;
+            padding: 2px 10px;
+            cursor: pointer;
+        }
+        .input-container {
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .hint-btn {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: #f0f0f0;
+            border: 1px solid #999;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 16px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        .hint-text {
+            display: none;
+            position: absolute;
+            background-color: #ffffd0;
+            border: 1px solid #ccc;
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 12px;
+            width: 200px;
+            top: 20px;
+            left: 100px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-title">Email</div>
+        <div class="form-content">
+            <form onsubmit="return validateEmail()">
+                <div class="input-container">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email">
+                    <span class="hint-btn" id="emailHintBtn">?</span>
+                    <div class="hint-text" id="emailHint">
+                        Valid email format: username@domain.com<br>
+                        - Must contain @ symbol<br>
+                        - Must have domain name with extension<br>
+                        - No spaces allowed
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+                <div id="emailError"></div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function validateEmail() {
+            const email = document.getElementById('email').value.trim();
+            const errorDiv = document.getElementById('emailError');
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (email === "") {
+                errorDiv.textContent = "Email cannot be empty";
+                errorDiv.className = "error";
+                return false;
+            }
+            if (!regex.test(email)) {
+                errorDiv.textContent = "Invalid email format";
+                errorDiv.className = "error";
+                return false;
+            }
+            errorDiv.textContent = "Valid Email!";
+            errorDiv.className = "success";
+            return true;
+        }
+        
+        // Hint button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hintBtn = document.getElementById('emailHintBtn');
+            const hintText = document.getElementById('emailHint');
+            
+            // Show/hide on click
+            hintBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                hintText.style.display = hintText.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // Show on hover
+            hintBtn.addEventListener('mouseenter', function() {
+                hintText.style.display = 'block';
+            });
+            
+            // Hide when leaving the button and not hovering the hint text
+            hintBtn.addEventListener('mouseleave', function() {
+                setTimeout(function() {
+                    if (!hintText.matches(':hover')) {
+                        hintText.style.display = 'none';
+                    }
+                }, 300);
+            });
+            
+            // Hide when mouse leaves the hint text
+            hintText.addEventListener('mouseleave', function() {
+                hintText.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
