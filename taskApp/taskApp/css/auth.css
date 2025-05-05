@@ -1,0 +1,128 @@
+@import url('./variables.css');
+
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--gradient-primary);
+  backdrop-filter: blur(16px);
+}
+
+.auth-form {
+  width: var(--form-width);
+  max-width: 480px;
+  background: var(--glass-bg);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-xl);
+  transition: var(--transition-normal);
+  border: var(--border-glass);
+  backdrop-filter: blur(12px);
+}
+
+.auth-form h2 {
+  margin-bottom: 2rem;
+  color: var(--bg-color);
+  font-weight: 800;
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  border-radius: var(--border-radius);
+  transition: var(--transition-fast);
+  font-size: 1rem;
+  color: var(--bg-color);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--bg-color);
+  box-shadow: var(--input-shadow);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: var(--gradient-accent);
+  color: var(--bg-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: var(--transition-fast);
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15);
+  opacity: 0;
+  transition: var(--transition-fast);
+}
+
+.btn-primary:hover::after {
+  opacity: 1;
+}
+
+.auth-alternate {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.auth-alternate a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.auth-alternate a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --form-width: 70%;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --form-width: 50%;
+  }
+}

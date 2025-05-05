@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Task Manager</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <a href="dashboard.html" class="nav-item active">
+                    <span>🏠</span> Dashboard
+                </a>
+                <a href="task.html" class="nav-item">
+                    <span>✅</span> Tasks
+                </a>
+                <a href="calendar.html" class="nav-item">
+                    <span>📅</span> Calendar
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <span>👤</span> Profile
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Task Dashboard</h1>
+                <button class="btn-primary" onclick="location.href='task.html'">+ New Task</button>
+            </header>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Tasks</h3>
+                    <p class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Completed</h3>
+                    <p class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Overdue</h3>
+                    <p class="stat-value">0</p>
+                </div>
+            </div>
+
+            <section class="recent-activity">
+                <h2>Recent Activities</h2>
+                <div class="activity-list">
+                    <!-- Dynamic content will be added via JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

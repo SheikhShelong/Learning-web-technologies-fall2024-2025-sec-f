@@ -1,0 +1,128 @@
+@import url('./variables.css');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-light);
+  font-size: 16px;
+}
+
+.main-header {
+  background: var(--gradient-primary);
+  color: var(--bg-color);
+  padding: var(--space-md) 0;
+  box-shadow: var(--shadow-xl);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-high);
+  backdrop-filter: blur(16px);
+  border-bottom: var(--border-glass);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-unit);
+}
+
+.nav-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--spacing-unit);
+  list-style: none;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-xl) var(--spacing-unit);
+  background: var(--gradient-accent);
+  color: var(--bg-color);
+  margin-bottom: var(--space-xl);
+  backdrop-filter: blur(24px);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  opacity: 0.9;
+}
+
+.btn {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--gradient-primary);
+  color: var(--bg-color);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 700;
+  transition: var(--transition-fast);
+  border: none;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  border: var(--border-glass);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-unit);
+}
+
+@media (min-width: 768px) {
+  .main-header {
+    padding: calc(var(--spacing-unit) * 1.5) 0;
+  }
+  
+  .nav-links {
+    gap: calc(var(--spacing-unit) * 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding: calc(var(--spacing-unit) * 6) var(--spacing-unit);
+  }
+}

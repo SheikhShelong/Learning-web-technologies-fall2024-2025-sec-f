@@ -1,0 +1,31 @@
+@import url('./variables.css');
+
+.task-container {
+  max-width: 800px;
+  margin: var(--space-xl) auto;
+  padding: var(--space-md);
+}
+
+.task-form {
+  background: var(--bg-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-lg);
+}
+
+.form-section {
+  margin-bottom: var(--space-md);
+}
+
+.form-row {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .task-container {
+    margin-top: var(--space-md);
+    padding: var(--space-sm);
+  }
+}

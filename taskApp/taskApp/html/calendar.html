@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar View - Task Manager</title>
+    <link rel="stylesheet" href="/css/calendar.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <header class="calendar-header">
+            <div class="view-controls">
+                <button class="btn-view active" data-view="day">Day</button>
+                <button class="btn-view" data-view="week">Week</button>
+                <button class="btn-view" data-view="month">Month</button>
+            </div>
+            <div class="date-navigation">
+                <button class="btn-nav" id="prevDate">←</button>
+                <input type="date" id="currentDate">
+                <button class="btn-nav" id="nextDate">→</button>
+            </div>
+        </header>
+
+        <main class="calendar-grid" id="calendarGrid">
+            <!-- Dynamic calendar content -->
+        </main>
+    </div>
+
+    <script src="/js/calendar.js"></script>
+</body>
+</html>
